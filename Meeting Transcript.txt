@@ -1,0 +1,105 @@
+Sarah Lin:
+
+Alright, let's kick off. Thanks for joining, everyone. Today we’re checking in on the mobile app redesign progress, diving into the backend performance blocker Devon flagged yesterday, and making sure Marcus has what he needs to build out the automated test suite.
+
+Elena, do you want to start us off with the latest designs for the checkout flow?
+
+Elena Rostova:
+
+Sure thing. I finalized the high-fidelity mockups for the streamlined checkout screens late yesterday. The main update was simplifying the payment selection step down to a single card toggle and standardizing our primary CTA buttons. I’ve updated the main Figma file with the dark mode variants as well.
+
+Alex and I did a quick design review this morning, and everything is officially handed off for implementation.
+
+Alex Rivera:
+
+Yeah, the updated component library made it super straightforward to pull into the project. I've already built out the frontend views for the payment selection screen using the new UI kit. We shouldn't need any custom CSS hacks this time around.
+
+Assuming no surprise layout bugs show up on smaller devices, we’re on track to have a testable build in staging by Thursday afternoon.
+
+Sarah Lin:
+
+That’s awesome progress, both of you. Ahead of schedule on the UI side is always a good place to be.
+
+Devon, let's talk about the API backend. You mentioned in Slack yesterday that we were seeing some performance regression on user profile fetches?
+
+Devon Vance:
+
+Yeah. The new endpoint for single-click payments is ready on staging and running smoothly, but we hit a bottleneck with the core getUserProfile endpoint. When loading the checkout review screen, response times are spiking up to 1.8 seconds in staging.
+
+Alex Rivera:
+
+Ouch. 1.8 seconds on a mobile connection is going to feel like a full crash to the user, especially on 4G or degraded Wi-Fi. What's causing the bloat?
+
+Devon Vance:
+
+I dug into the query execution plan this morning. It turns out that when the front end calls getUserProfile on checkout, the ORM is executing an unindexed JOIN on the entire historical order log—fetching every transaction the user has ever made—just to extract two fields: the default shipping address and active cart items.
+
+Marcus Vance:
+
+Is that also why our load tests were throwing intermittent 504 Gateway Timeout errors during the mock flash-sale runs last night?
+
+Devon Vance:
+
+Exactly. Under concurrent load, those unindexed joins completely saturate the database connection pool.
+
+Sarah Lin:
+
+Got it. What's the fix look like, and how long will it take?
+
+Devon Vance:
+
+I’m refactoring the query today to decouple cart metadata from historical order data. I'm splitting it into a lightweight getCheckoutContext endpoint that only pulls active session data and caches the user preferences in Redis.
+
+That should bring our response times down from 1.8s to well under 150ms. I'll have the PR ready for code review by 4:00 PM today, and pushed to staging by tomorrow morning.
+
+Sarah Lin:
+
+Perfect. If we hit sub-200ms, we’re in great shape for the beta release next week.
+
+Before we move to QA, I want to briefly touch on analytics. Elena and Alex, did we lock down the event schema for tracking user drop-offs during the checkout flow?
+
+Elena Rostova:
+
+Yes, I added an event spec table directly inside the Figma file under the "Tracking Specifications" page. We’re tracking three key interactions:
+
+checkout_step_completed (with properties for step name and payment method)
+
+payment_method_switched
+
+checkout_abandoned (triggered if the user leaves the screen before confirmation)
+
+Alex Rivera:
+
+I’ve already wired up the analytics SDK for the first two events. I just need Devon’s new endpoint live so I can attach the correct cart_id payload to the final purchase trigger.
+
+Sarah Lin:
+
+Great coordination. Marcus, how are we looking on test coverage and automation for this release?
+
+Marcus Vance:
+
+Once Alex pushes the frontend updates on Thursday, my team will execute our regression suite on iOS and Android simulators. We've written new Appium test scripts specifically for the single-click checkout pathway.
+
+If Devon gets the backend fix onto staging tomorrow morning, I can also run a dedicated load test cycle tomorrow afternoon to verify the database query improvements before Alex's UI drops on Thursday.
+
+Sarah Lin:
+
+That’s a solid sequence. Let's make sure we communicate in the #dev-checkout channel as each piece lands on staging so nobody is testing against stale code.
+
+Anything else blocking anyone before we wrap up?
+
+Elena Rostova:
+
+No blockers here. I’ll just be on standby for visual QA on Friday morning.
+
+Devon Vance:
+
+No blockers. Just heads-up that I’ll need Alex to approve the backend PR once I post it this afternoon.
+
+Alex Rivera:
+
+Will do. Tag me as soon as it's open.
+
+Sarah Lin:
+
+Awesome. Thanks everyone—great discussion today. Let’s execute on the plan and catch up async on Slack.
