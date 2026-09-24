@@ -1,0 +1,28 @@
+Project Brief — Website Redesign
+
+We're kicking off the website redesign project starting September 15, 2026.
+Dana Kim will be running point as project manager.
+
+Here's what needs to happen:
+
+Dana will handle the wireframes first — she's starting September 15 and
+needs them done by September 22. That's high priority since everything
+else depends on it.
+
+Once wireframes are ready, Marco Santos will review them with the client.
+That review should happen September 23 through September 25. Also high
+priority.
+
+After the review, we need a content audit. Priya Patel is going to own
+that one, running from September 26 to October 3. Medium priority, and
+she's already started pulling together the old site's content inventory,
+so mark that one as in progress at about 20% done.
+
+Finally, once content and wireframes are locked, the dev team (lead: Tom
+Reyes) will build the homepage template, October 6 to October 20. Not
+started yet, medium priority.
+
+Two big milestones to track: the client sign-off on the new design is
+targeted for October 1, and the site launch is targeted for October 30.
+Nothing officially blocking launch yet, but flag it as something to watch
+since the timeline is tight.

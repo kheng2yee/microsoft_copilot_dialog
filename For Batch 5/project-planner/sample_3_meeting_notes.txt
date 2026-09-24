@@ -1,0 +1,30 @@
+Product Launch Sync — notes
+Attendees: Wei (PM), Sam, Nora, Elle
+Today's date: Monday, September 8, 2026
+
+Recap / action items:
+
+- Sam: still working on the pricing page copy, started last Wednesday.
+  Said he can have a draft ready by end of this week. Called it urgent
+  since design is blocked on it.
+
+- Nora: needs to finalize the launch email sequence. Hasn't started yet.
+  Said she can turn it around in about a week and a half once Sam's copy
+  is in, so let's pencil in starting next Monday, done two weeks from
+  today. Not as urgent as the pricing page.
+
+- Elle: QA pass on the checkout flow. This is basically done already,
+  she said she's about 90% through it and should wrap up by Wednesday.
+  Nothing blocking.
+
+- Wei: flagged that legal review of the terms of service needs to happen
+  before we can launch — nobody's picked this up yet. Need to get it
+  assigned this week, due by the end of the month. High priority since
+  it's a hard blocker.
+
+Key dates we called out:
+- Soft launch to beta users: September 25
+- Full public launch: October 15
+
+Wei's note to self: chase legal team owner by Wednesday, still unassigned
+as of this meeting.

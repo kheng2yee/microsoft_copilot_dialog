@@ -1,0 +1,14 @@
+Item,Who's on it,Kickoff,Target Finish,Progress,Urgency,Comments
+Demo old kitchen,Jake,2026-10-05,2026-10-08,100,Med,Dumpster booked for the 5th
+Rough-in plumbing,Alicia,2026-10-09,2026-10-14,60,High,Inspector scheduled for the 15th
+Rough-in electrical,Marcus,2026-10-09,2026-10-16,40,High,Coordinate with plumber on shared wall
+Install cabinets,Alicia,2026-10-20,2026-10-25,0,Med,Cabinets arrive 10/18
+Countertop template + install,Sandra,2026-10-26,2026-11-02,0,Med,Templating takes 1 day then 2 week fab time
+Backsplash tile,Jake,2026-11-03,2026-11-07,0,Low,Waiting on tile choice from client
+Final inspection,Alicia,2026-11-10,2026-11-10,0,High,Must pass before appliance hookup
+
+Project: Kitchen Renovation — Client: The Hendersons
+PM: Jake Ortiz
+Start date: October 5 2026
+Big deadline: Final walkthrough Nov 14 2026
+Also don't forget: permit renewal is due Nov 1 2026, that's a hard deadline from the city
